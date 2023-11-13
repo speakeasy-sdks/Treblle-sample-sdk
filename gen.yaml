@@ -38,3 +38,8 @@ go:
   packageName: github.com/speakeasy-sdks/Treblle-sample-sdk
   published: true
   repoSubDirectory: .
+php:
+  version: 0.0.1
+  maxMethodParams: 4
+  namespace: Treblle\TheSpeakeasy
+  packageName: treblle/the-speakeasy-bar
