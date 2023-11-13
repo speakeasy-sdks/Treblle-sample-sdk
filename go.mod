@@ -1,4 +1,4 @@
-module github.com/speakeasy-sdks/template-speakeasy-bar
+module github.com/speakeasy-sdks/Treblle-sample-sdk
 
 go 1.14
 

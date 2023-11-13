@@ -1,19 +1,17 @@
 <!-- Start SDK Example Usage -->
-
-
 ```go
 package main
 
 import (
 	"context"
-	templatespeakeasybar "github.com/speakeasy-sdks/template-speakeasy-bar"
-	"github.com/speakeasy-sdks/template-speakeasy-bar/pkg/models/shared"
+	trebllesamplesdk "github.com/speakeasy-sdks/Treblle-sample-sdk"
+	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/shared"
 	"log"
 )
 
 func main() {
-	s := templatespeakeasybar.New(
-		templatespeakeasybar.WithSecurity(""),
+	s := trebllesamplesdk.New(
+		trebllesamplesdk.WithSecurity(""),
 	)
 
 	var drinkType *shared.DrinkType = shared.DrinkTypeSpirit
@@ -24,7 +22,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if res.Drinks != nil {
+	if res.Classes != nil {
 		// handle response
 	}
 }

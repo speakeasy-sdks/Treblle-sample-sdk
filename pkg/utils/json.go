@@ -12,7 +12,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/speakeasy-sdks/template-speakeasy-bar/pkg/types"
+	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/types"
 
 	"github.com/ericlagergren/decimal"
 )
