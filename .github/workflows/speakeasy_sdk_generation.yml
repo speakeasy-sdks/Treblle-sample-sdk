@@ -19,7 +19,7 @@ jobs:
     with:
       force: ${{ github.event.inputs.force }}
       languages: |
-        - go
+        - php
       mode: pr
       openapi_docs: |
         - https://raw.githubusercontent.com/speakeasy-sdks/template-speakeasy-bar/main/openapi.yaml
