@@ -17,19 +17,19 @@ package main
 import(
 	"context"
 	"log"
-	templatespeakeasybar "github.com/speakeasy-sdks/template-speakeasy-bar"
-	"github.com/speakeasy-sdks/template-speakeasy-bar/pkg/models/shared"
-	"github.com/speakeasy-sdks/template-speakeasy-bar/pkg/models/operations"
+	trebllesamplesdk "github.com/speakeasy-sdks/Treblle-sample-sdk"
+	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := templatespeakeasybar.New(
-        templatespeakeasybar.WithSecurity(""),
+    s := trebllesamplesdk.New(
+        trebllesamplesdk.WithSecurity(""),
     )
 
     ctx := context.Background()
-    res, err := s.Config.SubscribeToWebhooks(ctx, []operations.SubscribeToWebhooksRequestBody{
-        operations.SubscribeToWebhooksRequestBody{},
+    res, err := s.Config.SubscribeToWebhooks(ctx, []operations.RequestBody{
+        operations.RequestBody{},
     })
     if err != nil {
         log.Fatal(err)
@@ -43,13 +43,16 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `ctx`                                                            | [context.Context](https://pkg.go.dev/context#Context)            | :heavy_check_mark:                                               | The context to use for the request.                              |
-| `request`                                                        | [[]operations.SubscribeToWebhooksRequestBody](../../models//.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [[]operations.RequestBody](../../.md)                 | :heavy_check_mark:                                    | The request object to use for the request.            |
 
 
 ### Response
 
-**[*operations.SubscribeToWebhooksResponse](../../models/operations/subscribetowebhooksresponse.md), error**
-
+**[*operations.SubscribeToWebhooksResponse](../../pkg/models/operations/subscribetowebhooksresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.APIError | 5XX                | application/json   |
+| sdkerrors.SDKError | 400-600            | */*                |
