@@ -8,10 +8,11 @@ generation:
   comments:
     disableComments: false
     omitDescriptionIfSummaryPresent: false
-  baseServerURL: ""
   devContainers:
     enabled: true
     schemaPath: ./openapi.yaml
+  baseServerURL: ""
+  flattenGlobalSecurity: true
   repoURL: https://github.com/speakeasy-sdks/template-speakeasy-bar.git
   sdkClassName: speakeasy
   singleTagPerOp: false
@@ -34,6 +35,6 @@ go:
   flattenGlobalSecurity: true
   installationURL: https://github.com/speakeasy-sdks/template-speakeasy-bar
   maxMethodParams: 4
-  packageName: github.com/speakeasy-sdks/template-speakeasy-bar
+  packageName: github.com/speakeasy-sdks/Treblle-sample-sdk
   published: true
   repoSubDirectory: .
