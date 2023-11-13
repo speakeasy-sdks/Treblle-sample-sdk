@@ -22,8 +22,8 @@ jobs:
         - go
       mode: pr
       openapi_docs: |
-        - ./openapi.yaml
+        - https://raw.githubusercontent.com/speakeasy-sdks/template-speakeasy-bar/main/openapi.yaml
       speakeasy_version: latest
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }} #Get an API Key from your workspace at https://app.speakeasyapi.dev/
+      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
