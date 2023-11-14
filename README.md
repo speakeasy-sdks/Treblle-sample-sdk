@@ -52,8 +52,28 @@ Once you're finished iterating and happy with the output push only the latest ve
 <!-- Start SDK Installation -->
 ## SDK Installation
 
+### Composer
+
+To install the SDK first add the below to your `composer.json` file:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "github",
+            "url": "https://github.com/speakeasy-sdks/treblle-speakeasy-php.git"
+        }
+    ],
+    "require": {
+        "openapi/openapi": "*"
+    }
+}
+```
+
+Then run the following command:
+
 ```bash
-go get github.com/speakeasy-sdks/Treblle-sample-sdk
+composer update
 ```
 <!-- End SDK Installation -->
 
@@ -61,32 +81,31 @@ go get github.com/speakeasy-sdks/Treblle-sample-sdk
 <!-- Start SDK Example Usage -->
 ### Example
 
-```go
-package main
+```php
+<?php
 
-import (
-	"context"
-	trebllesamplesdk "github.com/speakeasy-sdks/Treblle-sample-sdk"
-	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/shared"
-	"log"
-)
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
 
-func main() {
-	s := trebllesamplesdk.New(
-		trebllesamplesdk.WithSecurity(""),
-	)
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Components;
+use OpenAPI\OpenAPI\Models\Operations;
 
-	var drinkType *shared.DrinkType = shared.DrinkTypeSpirit
+$security = new Components\Security();
+$security->apiKey = '';
 
-	ctx := context.Background()
-	res, err := s.Drinks.ListDrinks(ctx, drinkType)
-	if err != nil {
-		log.Fatal(err)
-	}
+$sdk = OpenAPI\Speakeasy::builder()
+    ->setSecurity($security)
+    ->build();
 
-	if res.Classes != nil {
-		// handle response
-	}
+try {
+    $response = $sdk->drinks->listDrinks(Components\DrinkType::Spirit);
+
+    if ($response->classes !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
 }
 
 ```
@@ -98,24 +117,24 @@ func main() {
 
 ### [Authentication](docs/sdks/authentication/README.md)
 
-* [Authenticate](docs/sdks/authentication/README.md#authenticate) - Authenticate with the API by providing a username and password.
+* [authenticate](docs/sdks/authentication/README.md#authenticate) - Authenticate with the API by providing a username and password.
 
 ### [Drinks](docs/sdks/drinks/README.md)
 
-* [GetDrink](docs/sdks/drinks/README.md#getdrink) - Get a drink.
-* [ListDrinks](docs/sdks/drinks/README.md#listdrinks) - Get a list of drinks.
+* [getDrink](docs/sdks/drinks/README.md#getdrink) - Get a drink.
+* [listDrinks](docs/sdks/drinks/README.md#listdrinks) - Get a list of drinks.
 
 ### [Ingredients](docs/sdks/ingredients/README.md)
 
-* [ListIngredients](docs/sdks/ingredients/README.md#listingredients) - Get a list of ingredients.
+* [listIngredients](docs/sdks/ingredients/README.md#listingredients) - Get a list of ingredients.
 
 ### [Orders](docs/sdks/orders/README.md)
 
-* [CreateOrder](docs/sdks/orders/README.md#createorder) - Create an order.
+* [createOrder](docs/sdks/orders/README.md#createorder) - Create an order.
 
 ### [Config](docs/sdks/config/README.md)
 
-* [SubscribeToWebhooks](docs/sdks/config/README.md#subscribetowebhooks) - Subscribe to webhooks.
+* [subscribeToWebhooks](docs/sdks/config/README.md#subscribetowebhooks) - Subscribe to webhooks.
 <!-- End SDK Available Operations -->
 
 <!-- Start Dev Containers -->

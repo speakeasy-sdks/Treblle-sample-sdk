@@ -1,58 +1,56 @@
 # Config
-(*Config*)
+
 
 ### Available Operations
 
-* [SubscribeToWebhooks](#subscribetowebhooks) - Subscribe to webhooks.
+* [subscribeToWebhooks](#subscribetowebhooks) - Subscribe to webhooks.
 
-## SubscribeToWebhooks
+## subscribeToWebhooks
 
 Subscribe to webhooks.
 
 ### Example Usage
 
-```go
-package main
+```php
+<?php
 
-import(
-	"context"
-	"log"
-	trebllesamplesdk "github.com/speakeasy-sdks/Treblle-sample-sdk"
-	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/operations"
-)
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
 
-func main() {
-    s := trebllesamplesdk.New(
-        trebllesamplesdk.WithSecurity(""),
-    )
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Components;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-    ctx := context.Background()
-    res, err := s.Config.SubscribeToWebhooks(ctx, []operations.RequestBody{
-        operations.RequestBody{},
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
+$security = new Components\Security();
+$security->apiKey = '';
 
-    if res.StatusCode == http.StatusOK {
+$sdk = OpenAPI\Speakeasy::builder()
+    ->setSecurity($security)
+    ->build();
+
+try {
+    $request = [
+        new Operations\RequestBody(),
+    ]
+
+    $response = $sdk->config->subscribeToWebhooks($request);
+
+    if ($response->statusCode === 200) {
         // handle response
     }
+} catch (Exception $e) {
+    // handle exception
 }
 ```
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-| `request`                                             | [[]operations.RequestBody](../../.md)                 | :heavy_check_mark:                                    | The request object to use for the request.            |
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
 
-**[*operations.SubscribeToWebhooksResponse](../../pkg/models/operations/subscribetowebhooksresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.APIError | 5XX                | application/json   |
-| sdkerrors.SDKError | 400-600            | */*                |
+**[?\OpenAPI\OpenAPI\Models\Operations\SubscribeToWebhooksResponse](../../Models/Operations/SubscribeToWebhooksResponse.md)**
+

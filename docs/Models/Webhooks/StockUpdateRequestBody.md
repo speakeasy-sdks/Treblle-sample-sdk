@@ -1,0 +1,9 @@
+# StockUpdateRequestBody
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `drink`                                                                                           | [?\OpenAPI\OpenAPI\Models\Components\DrinkInput](../../Models/Components/DrinkInput.md)           | :heavy_minus_sign:                                                                                | N/A                                                                                               |
+| `ingredient`                                                                                      | [?\OpenAPI\OpenAPI\Models\Components\IngredientInput](../../Models/Components/IngredientInput.md) | :heavy_minus_sign:                                                                                | N/A                                                                                               |

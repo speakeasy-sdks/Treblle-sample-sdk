@@ -1,5 +1,5 @@
 # Authentication
-(*Authentication*)
+
 
 ## Overview
 
@@ -7,54 +7,54 @@ The authentication endpoints.
 
 ### Available Operations
 
-* [Authenticate](#authenticate) - Authenticate with the API by providing a username and password.
+* [authenticate](#authenticate) - Authenticate with the API by providing a username and password.
 
-## Authenticate
+## authenticate
 
 Authenticate with the API by providing a username and password.
 
 ### Example Usage
 
-```go
-package main
+```php
+<?php
 
-import(
-	"context"
-	"log"
-	trebllesamplesdk "github.com/speakeasy-sdks/Treblle-sample-sdk"
-	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/operations"
-)
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
 
-func main() {
-    s := trebllesamplesdk.New(
-        trebllesamplesdk.WithSecurity(""),
-    )
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Components;
+use \OpenAPI\OpenAPI\Models\Operations;
 
-    ctx := context.Background()
-    res, err := s.Authentication.Authenticate(ctx, operations.AuthenticateRequestBody{})
-    if err != nil {
-        log.Fatal(err)
-    }
+$security = new Components\Security();
+$security->apiKey = '';
 
-    if res.Object != nil {
+$sdk = OpenAPI\Speakeasy::builder()
+    ->setSecurity($security)
+    ->build();
+
+try {
+    $request = new Operations\AuthenticateRequestBody();
+    $request->password = 'Nxq_X5HXg1lXJa5';
+    $request->username = 'Asa_Stamm77';
+
+    $response = $sdk->authentication->authenticate($request);
+
+    if ($response->object !== null) {
         // handle response
     }
+} catch (Exception $e) {
+    // handle exception
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |
-| `request`                                                                                    | [operations.AuthenticateRequestBody](../../pkg/models/operations/authenticaterequestbody.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                       | [\OpenAPI\OpenAPI\Models\Operations\AuthenticateRequestBody](../../Models/Operations/AuthenticateRequestBody.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
 
 
 ### Response
 
-**[*operations.AuthenticateResponse](../../pkg/models/operations/authenticateresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.APIError | 5XX                | application/json   |
-| sdkerrors.SDKError | 400-600            | */*                |
+**[?\OpenAPI\OpenAPI\Models\Operations\AuthenticateResponse](../../Models/Operations/AuthenticateResponse.md)**
+

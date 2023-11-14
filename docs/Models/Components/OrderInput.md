@@ -1,0 +1,12 @@
+# OrderInput
+
+An order for a drink or ingredient.
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `productCode`                                                                        | *string*                                                                             | :heavy_check_mark:                                                                   | The product code of the drink or ingredient.                                         | AC-A2DF3                                                                             |
+| `quantity`                                                                           | *int*                                                                                | :heavy_check_mark:                                                                   | The number of units of the drink or ingredient to order.                             |                                                                                      |
+| `type`                                                                               | [\OpenAPI\OpenAPI\Models\Components\OrderType](../../Models/Components/OrderType.md) | :heavy_check_mark:                                                                   | The type of order.                                                                   |                                                                                      |

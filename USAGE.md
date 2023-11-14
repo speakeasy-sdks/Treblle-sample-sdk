@@ -1,30 +1,29 @@
 <!-- Start SDK Example Usage -->
-```go
-package main
+```php
+<?php
 
-import (
-	"context"
-	trebllesamplesdk "github.com/speakeasy-sdks/Treblle-sample-sdk"
-	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/shared"
-	"log"
-)
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
 
-func main() {
-	s := trebllesamplesdk.New(
-		trebllesamplesdk.WithSecurity(""),
-	)
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Components;
+use OpenAPI\OpenAPI\Models\Operations;
 
-	var drinkType *shared.DrinkType = shared.DrinkTypeSpirit
+$security = new Components\Security();
+$security->apiKey = '';
 
-	ctx := context.Background()
-	res, err := s.Drinks.ListDrinks(ctx, drinkType)
-	if err != nil {
-		log.Fatal(err)
-	}
+$sdk = OpenAPI\Speakeasy::builder()
+    ->setSecurity($security)
+    ->build();
 
-	if res.Classes != nil {
-		// handle response
-	}
+try {
+    $response = $sdk->drinks->listDrinks(Components\DrinkType::Spirit);
+
+    if ($response->classes !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
 }
 
 ```

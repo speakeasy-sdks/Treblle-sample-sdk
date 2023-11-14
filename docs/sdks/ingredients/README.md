@@ -1,5 +1,5 @@
 # Ingredients
-(*Ingredients*)
+
 
 ## Overview
 
@@ -7,43 +7,43 @@ The ingredients endpoints.
 
 ### Available Operations
 
-* [ListIngredients](#listingredients) - Get a list of ingredients.
+* [listIngredients](#listingredients) - Get a list of ingredients.
 
-## ListIngredients
+## listIngredients
 
 Get a list of ingredients, if authenticated this will include stock levels and product codes otherwise it will only include public information.
 
 ### Example Usage
 
-```go
-package main
+```php
+<?php
 
-import(
-	"context"
-	"log"
-	trebllesamplesdk "github.com/speakeasy-sdks/Treblle-sample-sdk"
-	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/shared"
-)
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
 
-func main() {
-    s := trebllesamplesdk.New(
-        trebllesamplesdk.WithSecurity(""),
-    )
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Components;
+use \OpenAPI\OpenAPI\Models\Operations;
+
+$security = new Components\Security();
+$security->apiKey = '';
+
+$sdk = OpenAPI\Speakeasy::builder()
+    ->setSecurity($security)
+    ->build();
+
+try {
 
 
-    ingredients := []string{
-        "string",
-    }
+    $response = $sdk->ingredients->listIngredients([
+    'string',
+]);
 
-    ctx := context.Background()
-    res, err := s.Ingredients.ListIngredients(ctx, ingredients)
-    if err != nil {
-        log.Fatal(err)
-    }
-
-    if res.Classes != nil {
+    if ($response->classes !== null) {
         // handle response
     }
+} catch (Exception $e) {
+    // handle exception
 }
 ```
 
@@ -51,14 +51,10 @@ func main() {
 
 | Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `ctx`                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                 | :heavy_check_mark:                                                                    | The context to use for the request.                                                   |
-| `ingredients`                                                                         | []*string*                                                                            | :heavy_minus_sign:                                                                    | A list of ingredients to filter by. If not provided all ingredients will be returned. |
+| `ingredients`                                                                         | array<*string*>                                                                       | :heavy_minus_sign:                                                                    | A list of ingredients to filter by. If not provided all ingredients will be returned. |
 
 
 ### Response
 
-**[*operations.ListIngredientsResponse](../../pkg/models/operations/listingredientsresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.APIError | 5XX                | application/json   |
-| sdkerrors.SDKError | 400-600            | */*                |
+**[?\OpenAPI\OpenAPI\Models\Operations\ListIngredientsResponse](../../Models/Operations/ListIngredientsResponse.md)**
+

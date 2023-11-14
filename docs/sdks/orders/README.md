@@ -1,5 +1,5 @@
 # Orders
-(*Orders*)
+
 
 ## Overview
 
@@ -7,65 +7,55 @@ The orders endpoints.
 
 ### Available Operations
 
-* [CreateOrder](#createorder) - Create an order.
+* [createOrder](#createorder) - Create an order.
 
-## CreateOrder
+## createOrder
 
 Create an order for a drink.
 
 ### Example Usage
 
-```go
-package main
+```php
+<?php
 
-import(
-	"context"
-	"log"
-	trebllesamplesdk "github.com/speakeasy-sdks/Treblle-sample-sdk"
-	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/shared"
-)
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
 
-func main() {
-    s := trebllesamplesdk.New(
-        trebllesamplesdk.WithSecurity(""),
-    )
+use \OpenAPI\OpenAPI;
+use \OpenAPI\OpenAPI\Models\Components;
+use \OpenAPI\OpenAPI\Models\Operations;
+
+$security = new Components\Security();
+$security->apiKey = '';
+
+$sdk = OpenAPI\Speakeasy::builder()
+    ->setSecurity($security)
+    ->build();
+
+try {
 
 
-    requestBody := []shared.OrderInput{
-        shared.OrderInput{
-            ProductCode: "APM-1F2D3",
-            Quantity: 26535,
-            Type: shared.OrderTypeDrink,
-        },
-    }
+    $response = $sdk->orders->createOrder([
+    new Components\OrderInput(),
+], 'string');
 
-    var callbackURL *string = "string"
-
-    ctx := context.Background()
-    res, err := s.Orders.CreateOrder(ctx, requestBody, callbackURL)
-    if err != nil {
-        log.Fatal(err)
-    }
-
-    if res.Order != nil {
+    if ($response->order !== null) {
         // handle response
     }
+} catch (Exception $e) {
+    // handle exception
 }
 ```
 
 ### Parameters
 
-| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `ctx`                                                           | [context.Context](https://pkg.go.dev/context#Context)           | :heavy_check_mark:                                              | The context to use for the request.                             |
-| `requestBody`                                                   | [][shared.OrderInput](../../../pkg/models/shared/orderinput.md) | :heavy_check_mark:                                              | N/A                                                             |
-| `callbackURL`                                                   | **string*                                                       | :heavy_minus_sign:                                              | The url to call when the order is updated.                      |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                 | array<[\OpenAPI\OpenAPI\Models\Components\OrderInput](../../Models/Components/OrderInput.md)> | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `callbackUrl`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | The url to call when the order is updated.                                                    |
 
 
 ### Response
 
-**[*operations.CreateOrderResponse](../../pkg/models/operations/createorderresponse.md), error**
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| sdkerrors.APIError | 5XX                | application/json   |
-| sdkerrors.SDKError | 400-600            | */*                |
+**[?\OpenAPI\OpenAPI\Models\Operations\CreateOrderResponse](../../Models/Operations/CreateOrderResponse.md)**
+
