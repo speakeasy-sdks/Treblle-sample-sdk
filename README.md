@@ -49,7 +49,7 @@ servers:
 
 Once you're finished iterating and happy with the output push only the latest version of spec into the repo and regenerate the SDK using step 6 above. 
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### Composer
@@ -75,10 +75,11 @@ Then run the following command:
 ```bash
 composer update
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example
 
 ```php
@@ -109,11 +110,10 @@ try {
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [Authentication](docs/sdks/authentication/README.md)
 
@@ -135,19 +135,7 @@ try {
 ### [Config](docs/sdks/config/README.md)
 
 * [subscribeToWebhooks](docs/sdks/config/README.md#subscribetowebhooks) - Subscribe to webhooks.
-<!-- End SDK Available Operations -->
-
-<!-- Start Dev Containers -->
-# Dev Containers
-<div align="left">
-    <a href="https://codespaces.new/speakeasy-sdks/template-speakeasy-bar.git/tree/main"><img src="https://github.com/codespaces/badge.svg" /></a>
-    
-</div>
-
-Experience our SDK in an enhanced sandbox environment. Try it now in **GitHub Codespaces**!
-
-* [Explore Dev Containers](.devcontainer/README.md)
-<!-- End Dev Containers -->
+<!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Error Handling -->
 ## Error Handling

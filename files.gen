@@ -56,7 +56,6 @@ src/Models/Callbacks/CreateOrderOrderUpdateResponse.php
 src/Models/Callbacks/CreateOrderOrderUpdateRequestBody.php
 src/Models/Webhooks/StockUpdateResponse.php
 src/Models/Webhooks/StockUpdateRequestBody.php
-USAGE.md
 docs/Models/Operations/AuthenticateRequestBody.md
 docs/Models/Operations/AuthenticateResponseBody.md
 docs/Models/Operations/AuthenticateResponse.md
@@ -94,4 +93,5 @@ docs/sdks/drinks/README.md
 docs/sdks/ingredients/README.md
 docs/sdks/orders/README.md
 docs/sdks/config/README.md
+USAGE.md
 .gitattributes
