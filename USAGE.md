@@ -9,12 +9,7 @@ use OpenAPI\OpenAPI;
 use OpenAPI\OpenAPI\Models\Components;
 use OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Components\Security();
-$security->apiKey = '';
-
-$sdk = OpenAPI\Speakeasy::builder()
-    ->setSecurity($security)
-    ->build();
+$sdk = OpenAPI\Speakeasy::builder()->build();
 
 try {
     $response = $sdk->drinks->listDrinks(Components\DrinkType::Spirit);

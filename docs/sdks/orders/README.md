@@ -26,14 +26,12 @@ use \OpenAPI\OpenAPI\Models\Components;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $security = new Components\Security();
-$security->apiKey = '';
+$security->apiKey = '<YOUR_API_KEY_HERE>';
 
-$sdk = OpenAPI\Speakeasy::builder()
-    ->setSecurity($security)
-    ->build();
+$sdk = OpenAPI\Speakeasy::builder()->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->orders->createOrder([
     new Components\OrderInput(),

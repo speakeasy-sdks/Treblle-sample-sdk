@@ -92,12 +92,7 @@ use OpenAPI\OpenAPI;
 use OpenAPI\OpenAPI\Models\Components;
 use OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Components\Security();
-$security->apiKey = '';
-
-$sdk = OpenAPI\Speakeasy::builder()
-    ->setSecurity($security)
-    ->build();
+$sdk = OpenAPI\Speakeasy::builder()->build();
 
 try {
     $response = $sdk->drinks->listDrinks(Components\DrinkType::Spirit);
@@ -186,89 +181,32 @@ func main() {
 ```
 <!-- End Error Handling -->
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
+## Server Selection
+
 ## Server Selection
 
 ### Select Server by Name
 
-You can override the default server globally using the `WithServer` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
+You can override the default server globally by passing a server name to the `server: str` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
 | Name | Server | Variables |
 | ----- | ------ | --------- |
 | `prod` | `https://speakeasy.bar` | None |
 | `staging` | `https://staging.speakeasy.bar` | None |
-| `customer` | `https://{organization}.{environment}.speakeasy.bar` | `environment` (default is `prod`), `organization` (default is `api`) |
-#### Example
+| `customer` | `https://{organization}.{environment}.speakeasy.bar` | `0` (default is `prod`), `1` (default is `api`) |
 
-```go
-package main
-
-import (
-	"context"
-	trebllesamplesdk "github.com/speakeasy-sdks/Treblle-sample-sdk"
-	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/shared"
-	"log"
-)
-
-func main() {
-	s := trebllesamplesdk.New(
-		trebllesamplesdk.WithServer("customer"),
-		trebllesamplesdk.WithSecurity(""),
-	)
-
-	ctx := context.Background()
-	res, err := s.Authentication.Authenticate(ctx, operations.AuthenticateRequestBody{})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	if res.Object != nil {
-		// handle response
-	}
-}
-
-```
 
 #### Variables
 
-Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
- * `WithEnvironment trebllesamplesdk.ServerEnvironment`
- * `WithOrganization string`
+Some of the server options above contain variables. If you want to set the values of those variables, the following optional parameters are available when initializing the SDK client instance:
+ * `environment: ServerEnvironment`
+ * `organization: string`
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally using the `WithServerURL` option when initializing the SDK client instance. For example:
-```go
-package main
-
-import (
-	"context"
-	trebllesamplesdk "github.com/speakeasy-sdks/Treblle-sample-sdk"
-	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/Treblle-sample-sdk/pkg/models/shared"
-	"log"
-)
-
-func main() {
-	s := trebllesamplesdk.New(
-		trebllesamplesdk.WithServerURL("https://speakeasy.bar"),
-		trebllesamplesdk.WithSecurity(""),
-	)
-
-	ctx := context.Background()
-	res, err := s.Authentication.Authenticate(ctx, operations.AuthenticateRequestBody{})
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	if res.Object != nil {
-		// handle response
-	}
-}
-
-```
-<!-- End Server Selection -->
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+<!-- End Server Selection [server] -->
 
 <!-- Start Custom HTTP Client -->
 ## Custom HTTP Client

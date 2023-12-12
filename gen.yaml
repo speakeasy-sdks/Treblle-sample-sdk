@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: abbc3a8faac54f76013e5d509a8d11ec
   docVersion: 1.0.0
-  speakeasyVersion: 1.123.0
-  generationVersion: 2.202.2
+  speakeasyVersion: 1.126.0
+  generationVersion: 2.213.3
 generation:
   comments: {}
   devContainers:
@@ -28,12 +28,13 @@ features:
     inputOutputModels: 2.82.0
     serverIDs: 2.81.1
   php:
-    core: 3.1.2
+    core: 3.2.0
     examples: 2.81.3
     flattening: 2.81.1
-    globalSecurity: 2.81.1
+    globalSecurity: 2.81.2
     globalServerURLs: 2.82.1
     inputOutputModels: 2.82.0
+    methodSecurity: 2.82.0
     serverIDs: 2.81.1
 go:
   version: 0.7.0
@@ -55,7 +56,7 @@ go:
   published: true
   repoSubDirectory: .
 php:
-  version: 0.0.3
+  version: 0.1.0
   imports:
     option: openapi
     paths:

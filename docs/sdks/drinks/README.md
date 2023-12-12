@@ -27,14 +27,12 @@ use \OpenAPI\OpenAPI\Models\Components;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $security = new Components\Security();
-$security->apiKey = '';
+$security->apiKey = '<YOUR_API_KEY_HERE>';
 
-$sdk = OpenAPI\Speakeasy::builder()
-    ->setSecurity($security)
-    ->build();
+$sdk = OpenAPI\Speakeasy::builder()->setSecurity($security)->build();
 
 try {
-
+    
 
     $response = $sdk->drinks->getDrink('string');
 
@@ -74,15 +72,10 @@ use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Components;
 use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Components\Security();
-$security->apiKey = '';
-
-$sdk = OpenAPI\Speakeasy::builder()
-    ->setSecurity($security)
-    ->build();
+$sdk = OpenAPI\Speakeasy::builder()->build();
 
 try {
-
+    
 
     $response = $sdk->drinks->listDrinks(Components\DrinkType::Spirit);
 
