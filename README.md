@@ -54,26 +54,8 @@ Once you're finished iterating and happy with the output push only the latest ve
 
 ### Composer
 
-To install the SDK first add the below to your `composer.json` file:
-
-```json
-{
-    "repositories": [
-        {
-            "type": "github",
-            "url": "https://github.com/speakeasy-sdks/treblle-speakeasy-php.git"
-        }
-    ],
-    "require": {
-        "openapi/openapi": "*"
-    }
-}
-```
-
-Then run the following command:
-
 ```bash
-composer update
+composer require "openapi/openapi"
 ```
 <!-- End SDK Installation [installation] -->
 
