@@ -28,7 +28,7 @@ go:
   outputModelSuffix: output
   packageName: github.com/speakeasy-sdks/Treblle-sample-sdk
 php:
-  version: 0.1.0
+  version: 0.1.1
   imports:
     option: openapi
     paths:
