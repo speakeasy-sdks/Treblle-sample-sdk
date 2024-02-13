@@ -8,6 +8,8 @@ generation:
     optionalPropertyRendering: withExample
   fixes:
     nameResolutionDec2023: false
+    parameterOrderingFeb2024: false
+    requestResponseComponentNamesFeb2024: false
   baseServerURL: ""
   flattenGlobalSecurity: true
   telemetryEnabled: false
@@ -28,7 +30,7 @@ go:
   outputModelSuffix: output
   packageName: github.com/speakeasy-sdks/Treblle-sample-sdk
 php:
-  version: 0.1.1
+  version: 0.1.2
   imports:
     option: openapi
     paths:
