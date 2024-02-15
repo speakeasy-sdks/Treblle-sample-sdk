@@ -35,7 +35,7 @@ try {
 
     $response = $sdk->orders->createOrder([
     new Components\OrderInput(),
-], 'string');
+], '<value>');
 
     if ($response->order !== null) {
         // handle response

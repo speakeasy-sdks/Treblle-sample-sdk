@@ -34,7 +34,7 @@ try {
     
 
     $response = $sdk->ingredients->listIngredients([
-    'string',
+    '<value>',
 ]);
 
     if ($response->classes !== null) {

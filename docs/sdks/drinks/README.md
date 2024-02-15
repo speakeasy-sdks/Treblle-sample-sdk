@@ -34,7 +34,7 @@ $sdk = OpenAPI\Speakeasy::builder()->setSecurity($security)->build();
 try {
     
 
-    $response = $sdk->drinks->getDrink('string');
+    $response = $sdk->drinks->getDrink('<value>');
 
     if ($response->drink !== null) {
         // handle response
