@@ -10,6 +10,8 @@ generation:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
   baseServerURL: ""
   flattenGlobalSecurity: true
   telemetryEnabled: false
@@ -30,7 +32,7 @@ go:
   outputModelSuffix: output
   packageName: github.com/speakeasy-sdks/Treblle-sample-sdk
 php:
-  version: 0.1.3
+  version: 0.2.0
   imports:
     option: openapi
     paths:

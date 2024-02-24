@@ -19,16 +19,14 @@ Authenticate with the API by providing a username and password.
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Components;
 use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Components\Security();
-$security->apiKey = '<YOUR_API_KEY_HERE>';
-
-$sdk = OpenAPI\Speakeasy::builder()->setSecurity($security)->build();
+$sdk = OpenAPI\Speakeasy::builder()->build();
 
 try {
         $request = new Operations\AuthenticateRequestBody();

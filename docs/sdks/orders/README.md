@@ -19,7 +19,8 @@ Create an order for a drink.
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Components;

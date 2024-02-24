@@ -20,7 +20,8 @@ Get a drink by name, if authenticated this will include stock levels and product
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Components;
@@ -66,13 +67,17 @@ Get a list of drinks, if authenticated this will include stock levels and produc
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Components;
 use \OpenAPI\OpenAPI\Models\Operations;
 
-$sdk = OpenAPI\Speakeasy::builder()->build();
+$security = new Components\Security();
+$security->apiKey = '<YOUR_API_KEY_HERE>';
+
+$sdk = OpenAPI\Speakeasy::builder()->setSecurity($security)->build();
 
 try {
     

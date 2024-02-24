@@ -19,7 +19,8 @@ Get a list of ingredients, if authenticated this will include stock levels and p
 <?php
 
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
+
+require 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Components;
