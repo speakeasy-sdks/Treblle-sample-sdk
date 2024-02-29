@@ -28,7 +28,7 @@ use \OpenAPI\OpenAPI\Models\Components;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $security = new Components\Security();
-$security->apiKey = '<YOUR_API_KEY_HERE>';
+$security->apiKey = '<YOUR_API_KEY>';
 
 $sdk = OpenAPI\Speakeasy::builder()->setSecurity($security)->build();
 
@@ -74,15 +74,15 @@ use \OpenAPI\OpenAPI;
 use \OpenAPI\OpenAPI\Models\Components;
 use \OpenAPI\OpenAPI\Models\Operations;
 
-$security = new Components\Security();
-$security->apiKey = '<YOUR_API_KEY_HERE>';
-
-$sdk = OpenAPI\Speakeasy::builder()->setSecurity($security)->build();
+$sdk = OpenAPI\Speakeasy::builder()->build();
 
 try {
     
 
-    $response = $sdk->drinks->listDrinks(Components\DrinkType::Spirit);
+    $requestSecurity = new Operations\ListDrinksSecurity();
+    $requestSecurity->bearerAuth = '<YOUR_JWT>';
+
+    $response = $sdk->drinks->listDrinks($requestSecurity, Components\DrinkType::Spirit);
 
     if ($response->classes !== null) {
         // handle response
@@ -94,9 +94,11 @@ try {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `drinkType`                                                                          | [\OpenAPI\OpenAPI\Models\Components\DrinkType](../../Models/Components/DrinkType.md) | :heavy_minus_sign:                                                                   | The type of drink to filter by. If not provided all drinks will be returned.         |
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `security`                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\ListDrinksSecurity](../../Models/Operations/ListDrinksSecurity.md) | :heavy_check_mark:                                                                                     | The security requirements to use for the request.                                                      |
+| `drinkType`                                                                                            | [\OpenAPI\OpenAPI\Models\Components\DrinkType](../../Models/Components/DrinkType.md)                   | :heavy_minus_sign:                                                                                     | The type of drink to filter by. If not provided all drinks will be returned.                           |
+| `$serverURL`                                                                                           | *string*                                                                                               | :heavy_minus_sign:                                                                                     | An optional server URL to use.                                                                         |
 
 
 ### Response

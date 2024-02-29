@@ -58,6 +58,12 @@ class Config
         
         if ($httpResponse->getStatusCode() === 200) {
         }
+        else if ($httpResponse->getStatusCode() === 400) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->badRequest = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Components\BadRequest', 'json');
+            }
+        }
         else if (($httpResponse->getStatusCode() >= 500 && $httpResponse->getStatusCode() < 600)) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();

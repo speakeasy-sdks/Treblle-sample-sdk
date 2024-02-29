@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Operations;
 
 
-class AuthenticateResponse
+class LoginResponse
 {
     /**
      * An error occurred interacting with the API.
@@ -54,10 +54,10 @@ class AuthenticateResponse
     /**
      * The api key to use for authenticated endpoints.
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\AuthenticateResponseBody $object
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\LoginResponseBody $object
      */
 	
-    public ?AuthenticateResponseBody $object = null;
+    public ?LoginResponseBody $object = null;
     
 	public function __construct()
 	{

@@ -10,6 +10,11 @@ namespace OpenAPI\OpenAPI;
 
 class Drinks 
 {
+	
+	public const LIST_DRINKS_SERVERS = [
+		'https://speakeasy.bar',
+		'https://test.speakeasy.bar',
+	];
 
 	private SDKConfiguration $sdkConfiguration;
 
@@ -81,17 +86,26 @@ class Drinks
      * 
      * Get a list of drinks, if authenticated this will include stock levels and product codes otherwise it will only include public information.
      * 
+     * @param \OpenAPI\OpenAPI\Models\Operations\ListDrinksSecurity $security
      * @param ?\OpenAPI\OpenAPI\Models\Components\DrinkType $drinkType
+     * @param string $serverURL
      * @return \OpenAPI\OpenAPI\Models\Operations\ListDrinksResponse
      */
 	public function listDrinks(
+        \OpenAPI\OpenAPI\Models\Operations\ListDrinksSecurity $security,
         ?\OpenAPI\OpenAPI\Models\Components\DrinkType $drinkType = null,
+        ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\ListDrinksResponse
     {
         $request = new \OpenAPI\OpenAPI\Models\Operations\ListDrinksRequest();
         $request->drinkType = $drinkType;
         
-        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $baseUrl = Utils\Utils::templateUrl(Drinks::LIST_DRINKS_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
         $url = Utils\Utils::generateUrl($baseUrl, '/drinks');
         
         $options = ['http_errors' => false];
@@ -99,7 +113,8 @@ class Drinks
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         
-        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
+        $httpResponse = $client->request('GET', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 

@@ -20,6 +20,14 @@ class SubscribeToWebhooksResponse
     public ?\OpenAPI\OpenAPI\Models\Components\APIError $apiError = null;
     
     /**
+     * Bad Request
+     * 
+     * @var ?\OpenAPI\OpenAPI\Models\Components\BadRequest $badRequest
+     */
+	
+    public ?\OpenAPI\OpenAPI\Models\Components\BadRequest $badRequest = null;
+    
+    /**
      * HTTP response content type for this operation
      * 
      * @var string $contentType
@@ -54,6 +62,7 @@ class SubscribeToWebhooksResponse
 	public function __construct()
 	{
 		$this->apiError = null;
+		$this->badRequest = null;
 		$this->contentType = "";
 		$this->error = null;
 		$this->statusCode = 0;

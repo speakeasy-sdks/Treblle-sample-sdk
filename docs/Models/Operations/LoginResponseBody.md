@@ -1,4 +1,4 @@
-# AuthenticateResponseBody
+# LoginResponseBody
 
 The api key to use for authenticated endpoints.
 

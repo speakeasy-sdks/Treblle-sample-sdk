@@ -24,12 +24,14 @@ class Authentication
     /**
      * Authenticate with the API by providing a username and password.
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\AuthenticateRequestBody $request
-     * @return \OpenAPI\OpenAPI\Models\Operations\AuthenticateResponse
+     * @param \OpenAPI\OpenAPI\Models\Operations\LoginRequestBody $request
+     * @param \OpenAPI\OpenAPI\Models\Operations\LoginSecurity $security
+     * @return \OpenAPI\OpenAPI\Models\Operations\LoginResponse
      */
-	public function authenticate(
-        \OpenAPI\OpenAPI\Models\Operations\AuthenticateRequestBody $request,
-    ): \OpenAPI\OpenAPI\Models\Operations\AuthenticateResponse
+	public function login(
+        \OpenAPI\OpenAPI\Models\Operations\LoginRequestBody $request,
+        \OpenAPI\OpenAPI\Models\Operations\LoginSecurity $security,
+    ): \OpenAPI\OpenAPI\Models\Operations\LoginResponse
     {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/authenticate');
@@ -43,13 +45,14 @@ class Authentication
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['user-agent'] = $this->sdkConfiguration->userAgent;
         
-        $httpResponse = $this->sdkConfiguration->defaultClient->request('POST', $url, $options);
+        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
+        $httpResponse = $client->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $statusCode = $httpResponse->getStatusCode();
 
-        $response = new \OpenAPI\OpenAPI\Models\Operations\AuthenticateResponse();
+        $response = new \OpenAPI\OpenAPI\Models\Operations\LoginResponse();
         $response->statusCode = $statusCode;
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
@@ -57,7 +60,7 @@ class Authentication
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
-                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\AuthenticateResponseBody', 'json');
+                $response->object = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\LoginResponseBody', 'json');
             }
         }
         else if ($httpResponse->getStatusCode() === 401) {

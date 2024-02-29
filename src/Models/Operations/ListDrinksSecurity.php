@@ -6,20 +6,16 @@
 
 declare(strict_types=1);
 
-namespace OpenAPI\OpenAPI\Models\Components;
+namespace OpenAPI\OpenAPI\Models\Operations;
 
 use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
-class Security
+class ListDrinksSecurity
 {
-	#[SpeakeasyMetadata('security:scheme=true,type=apiKey,subtype=header,name=Authorization')]
-    public ?string $apiKey = null;
-    
 	#[SpeakeasyMetadata('security:scheme=true,type=http,subtype=bearer,name=Authorization')]
     public ?string $bearerAuth = null;
     
 	public function __construct()
 	{
-		$this->apiKey = null;
 		$this->bearerAuth = null;
 	}
 }

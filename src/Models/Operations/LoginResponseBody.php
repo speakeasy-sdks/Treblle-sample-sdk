@@ -10,12 +10,12 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 
 /**
- * AuthenticateResponseBody - The api key to use for authenticated endpoints.
+ * LoginResponseBody - The api key to use for authenticated endpoints.
  * 
  * @package OpenAPI\OpenAPI\Models\Operations
  * @access public
  */
-class AuthenticateResponseBody
+class LoginResponseBody
 {
 	#[\JMS\Serializer\Annotation\SerializedName('token')]
     #[\JMS\Serializer\Annotation\Type('string')]

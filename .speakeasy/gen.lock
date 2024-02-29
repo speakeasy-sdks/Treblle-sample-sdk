@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: d3e0f5e8-ff10-4296-bdd2-2c5a47dab599
 management:
-  docChecksum: abbc3a8faac54f76013e5d509a8d11ec
+  docChecksum: fccfbcdba7e8ff6d0d82dfc68d248ddc
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.272.4
-  releaseVersion: 0.2.0
-  configChecksum: 79a0da0657dccaa0636938806dada236
+  generationVersion: 2.275.2
+  releaseVersion: 0.3.0
+  configChecksum: 972d58df2d2e71a286878525bde50335
   repoURL: https://github.com/speakeasy-sdks/treblle-speakeasy-php.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/treblle-speakeasy-php
@@ -23,13 +23,17 @@ features:
     inputOutputModels: 2.82.0
     serverIDs: 2.81.1
   php:
+    callbacks: 1.0.0
     core: 3.3.3
     examples: 2.81.3
     flattening: 2.81.1
-    globalSecurity: 2.81.4
+    globalSecurity: 2.81.5
     globalServerURLs: 2.82.1
     inputOutputModels: 2.83.0
+    methodSecurity: 2.82.1
+    methodServerURLs: 2.82.1
     serverIDs: 2.81.1
+    webhooks: 1.0.0
 generatedFiles:
   - src/SDKConfiguration.php
   - src/Authentication.php
@@ -59,11 +63,14 @@ generatedFiles:
   - src/Utils/SecurityMetadata.php
   - src/Utils/SpeakeasyMetadata.php
   - src/Utils/Utils.php
-  - src/Models/Operations/AuthenticateRequestBody.php
-  - src/Models/Operations/AuthenticateResponseBody.php
-  - src/Models/Operations/AuthenticateResponse.php
+  - src/Models/Operations/LoginSecurity.php
+  - src/Models/Operations/Type.php
+  - src/Models/Operations/LoginRequestBody.php
+  - src/Models/Operations/LoginResponseBody.php
+  - src/Models/Operations/LoginResponse.php
   - src/Models/Operations/GetDrinkRequest.php
   - src/Models/Operations/GetDrinkResponse.php
+  - src/Models/Operations/ListDrinksSecurity.php
   - src/Models/Operations/ListDrinksRequest.php
   - src/Models/Operations/ListDrinksResponse.php
   - src/Models/Operations/ListIngredientsRequest.php
@@ -83,6 +90,7 @@ generatedFiles:
   - src/Models/Components/Order.php
   - src/Models/Components/OrderType.php
   - src/Models/Components/OrderInput.php
+  - src/Models/Components/BadRequest.php
   - src/Models/Components/Security.php
   - src/Models/Components/IngredientInput.php
   - src/Models/Components/DrinkInput.php
@@ -90,11 +98,14 @@ generatedFiles:
   - src/Models/Callbacks/CreateOrderOrderUpdateRequestBody.php
   - src/Models/Webhooks/StockUpdateResponse.php
   - src/Models/Webhooks/StockUpdateRequestBody.php
-  - docs/Models/Operations/AuthenticateRequestBody.md
-  - docs/Models/Operations/AuthenticateResponseBody.md
-  - docs/Models/Operations/AuthenticateResponse.md
+  - docs/Models/Operations/LoginSecurity.md
+  - docs/Models/Operations/Type.md
+  - docs/Models/Operations/LoginRequestBody.md
+  - docs/Models/Operations/LoginResponseBody.md
+  - docs/Models/Operations/LoginResponse.md
   - docs/Models/Operations/GetDrinkRequest.md
   - docs/Models/Operations/GetDrinkResponse.md
+  - docs/Models/Operations/ListDrinksSecurity.md
   - docs/Models/Operations/ListDrinksRequest.md
   - docs/Models/Operations/ListDrinksResponse.md
   - docs/Models/Operations/ListIngredientsRequest.md
@@ -114,6 +125,7 @@ generatedFiles:
   - docs/Models/Components/Order.md
   - docs/Models/Components/OrderType.md
   - docs/Models/Components/OrderInput.md
+  - docs/Models/Components/BadRequest.md
   - docs/Models/Components/Security.md
   - docs/Models/Components/IngredientInput.md
   - docs/Models/Components/DrinkInput.md

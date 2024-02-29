@@ -23,7 +23,7 @@ use \OpenAPI\OpenAPI\Models\Components;
 use \OpenAPI\OpenAPI\Models\Operations;
 
 $security = new Components\Security();
-$security->apiKey = '<YOUR_API_KEY_HERE>';
+$security->apiKey = '<YOUR_API_KEY>';
 
 $sdk = OpenAPI\Speakeasy::builder()->setSecurity($security)->build();
 
