@@ -3,10 +3,10 @@ id: d3e0f5e8-ff10-4296-bdd2-2c5a47dab599
 management:
   docChecksum: fccfbcdba7e8ff6d0d82dfc68d248ddc
   docVersion: 1.0.0
-  speakeasyVersion: internal
-  generationVersion: 2.275.2
-  releaseVersion: 0.3.0
-  configChecksum: 972d58df2d2e71a286878525bde50335
+  speakeasyVersion: 1.227.0
+  generationVersion: 2.291.0
+  releaseVersion: 0.3.1
+  configChecksum: e20cd7593a9f9f919b7c979b0fc059e4
   repoURL: https://github.com/speakeasy-sdks/treblle-speakeasy-php.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/treblle-speakeasy-php
@@ -27,7 +27,7 @@ features:
     core: 3.3.3
     examples: 2.81.3
     flattening: 2.81.1
-    globalSecurity: 2.81.5
+    globalSecurity: 2.81.6
     globalServerURLs: 2.82.1
     inputOutputModels: 2.83.0
     methodSecurity: 2.82.1
